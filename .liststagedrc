@@ -1,0 +1,9 @@
+{
+  "src/**/*.{json,css}": ["prettier --write", "git add"],
+  "src/**/*.js": ["prettier --write", "eslint --fix", "git add"],
+  module.exports = {
+  'src/**/*.{js,jsx}?(x)':
+    'yarn run lint:format && yarn run lint:fix && git add .',
+  'src/**/*.{json,css}?(x)': 'yarn run lint:format && git add .',
+};
+}
