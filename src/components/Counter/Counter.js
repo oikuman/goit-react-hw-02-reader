@@ -1,16 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
-import css from "./Counter.module.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import css from './Counter.module.css';
 
-const Counter = ({ index, length }) => (
-    <p className={css.counter}>
-        {index + 1}/{length}
-    </p>
+const Counter = ({ index, len }) => (
+  <p className={css.counter}>
+    {index + 1}/{len}
+  </p>
 );
 
 Counter.propTypes = {
-    index: PropTypes.number.isRequired,
-    length: PropTypes.number.isRequired
+  index: PropTypes.number.isRequired,
+  len: PropTypes.number.isRequired,
 };
 
 export default Counter;

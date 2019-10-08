@@ -1,29 +1,33 @@
-import React from "react";
-import PropTypes from "prop-types";
-import css from "./Controls.module.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import css from './Controls.module.css';
 
-const Controls = ({ handleBack, handleForward }) => (
+const Controls = ({ index, len, handleBack, handleForward }) => {
+
+  const setButton = (action, label, disabled) => (
+      <button
+          onClick={e => action(e)}
+          type="button"
+          className={css.button}
+          disabled={disabled}
+        >
+          {label}
+        </button>
+    );
+  
+  return (
     <section className={css.controls}>
-        <button
-            onClick={e => handleBack(e)}
-            type="button"
-            className={css.button}
-        >
-            Назад
-        </button>
-        <button
-            onClick={e => handleForward(e)}
-            type="button"
-            className={css.button}
-        >
-            Вперед
-        </button>
+      {index === 0 ? setButton(handleBack, "Назад", true) : setButton(handleBack, "Назад", false)}
+      {index === len - 1 ? setButton(handleForward, "Вперед", true) : setButton(handleForward, "Вперед", false)}
     </section>
-);
+  );
+};
 
 Controls.propTypes = {
-    handleBack: PropTypes.func.isRequired,
-    handleForward: PropTypes.func.isRequired
+  index: PropTypes.number.isRequired,
+  len: PropTypes.number.isRequired,
+  handleBack: PropTypes.func.isRequired,
+  handleForward: PropTypes.func.isRequired,
 };
 
 export default Controls;
